@@ -15,6 +15,7 @@
 
 
   <ItemGroup>
+  <ProjectReference Include="..\data\Circuit.Data.csproj" />
     <ProjectReference Include="..\equations\Circuit.Equations.csproj" />
   </ItemGroup>
 
