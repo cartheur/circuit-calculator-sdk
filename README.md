@@ -23,6 +23,10 @@ It is about 85% complete and needs love in a few places.
 * A computational engine for [pettable](https://github.com/Cartheur-Research/animals-pettable)
 * Words.
 
+### The containerized build
+
+`podman build --force-rm --tag calculon:20241218 /home/cartheur/ame/aiventure/aiventure-github/cartheur/circuit-calculator-sdk/Circuit.Calculator`
+
 #### Errata
 
 * Branch _stale_ is the first-draft codebase.
