@@ -1,6 +1,10 @@
 # circuit-calculator-sdk
 
-The SDK version of the popular Experimenter's Station. Sources are [here](https://github.com/cartheur/circuitcalculator).
+The SDK version of the popular Experimenter's Station. Sources are [here](https://github.com/cartheur/circuitcalculator). In this version:
+
+* Framework Windows Forms are console runtime of equations in predefined _solution pathways_ that can aid algorithmic development within the confines of CoPilot.
+* While this, unfortuntaely, obscures what equations are executing, visibility will be experimented in various ways with interpretive logging, similar to AGI Chat feedback.
+* The precision of computation is the aim of the project going forward. A reliable means to transform data into information without external influences.
 
 ## The Electromagnetic Circuit Calculator - Experimenter's Laboratory
 
