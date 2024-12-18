@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CircuitCalculator.Numbers
+namespace Equations.Numbers
 {
     /// <summary>
     /// Constants used in the calculations.

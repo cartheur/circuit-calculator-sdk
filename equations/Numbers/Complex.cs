@@ -2,7 +2,7 @@ using System;
 using System.Text.RegularExpressions;
 using System.Runtime.Serialization;
 
-namespace CircuitCalculator.Numbers
+namespace Equations.Numbers
 {
     /// <summary>
     /// Complex number wrapper class.
@@ -249,7 +249,7 @@ namespace CircuitCalculator.Numbers
         /// 
         public static Complex Multiply( Complex a, Complex b )
         {
-            // (x + yi)(u + vi) = (xu – yv) + (xv + yu)i. 
+            // (x + yi)(u + vi) = (xu ï¿½ yv) + (xv + yu)i. 
             double aRe = a.Re, aIm = a.Im;
             double bRe = b.Re, bIm = b.Im;
 
@@ -278,7 +278,7 @@ namespace CircuitCalculator.Numbers
         /// 
         public static void Multiply( Complex a, Complex b, ref Complex result )
         {
-            // (x + yi)(u + vi) = (xu – yv) + (xv + yu)i. 
+            // (x + yi)(u + vi) = (xu ï¿½ yv) + (xv + yu)i. 
             double aRe = a.Re, aIm = a.Im;
             double bRe = b.Re, bIm = b.Im;
 
