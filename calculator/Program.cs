@@ -1,4 +1,6 @@
-﻿namespace Circuit.Calculator
+﻿using Circuit.Equations;
+
+namespace Circuit.Calculator
 {
     internal class Program
     {
@@ -7,7 +9,7 @@
             Console.WriteLine("Hello, this is the Circuit Calculator!");
             Console.WriteLine("Please enter the circuit you want to calculate:");
             string circuit = Console.ReadLine();
-            Console.WriteLine("The result is: " + Calculate(circuit));
+            //Console.WriteLine("The result is: " + Calculate(circuit));
         }
     }
 }
