@@ -21,7 +21,7 @@ It is about 85% complete and needs love in a few places.
 ### Present workloads
 
 * A computational engine for [pettable](https://github.com/Cartheur-Research/animals-pettable)
-* Words.
+* What computations need to be added and how do we delete the SaaS approach denoted by Nadella?
 
 ### The containerized build
 
