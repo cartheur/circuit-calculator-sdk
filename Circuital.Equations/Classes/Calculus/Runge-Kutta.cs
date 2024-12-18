@@ -6,7 +6,7 @@ namespace CircuitCalculator
     /// Fourth order Runge-Kutta method for y'=f(t,y); 
     /// solve first order ode in the interval (a,b) with a given initial condition at x=a and fixed step h.
     /// </summary>
-    public class Runge_Kutta
+    public class RungeKutta
     {
         // Declare a delegate that takes a double and returns a double.
         public delegate double Function(double t, double y);
