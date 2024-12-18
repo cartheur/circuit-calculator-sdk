@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-# Copy the *.csproj files.
+# Copy the content.
 COPY ./calculator .
 COPY ./equations .
 
@@ -17,16 +17,19 @@ COPY ./equations .
 COPY . .
 RUN dotnet restore ./calculator/Circuit.Calculator.csproj
 WORKDIR "/src/."
-RUN dotnet build ./calculator/Circuit.Calculator.csproj -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./calculator/Circuit.Calculator.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
-# This stage is used to publish the service project to be copied to the final stage
+# This stage is used to publish the project to be copied to the final stage
 FROM build AS publish
 
-RUN dotnet publish ./calculator/Circuit.Calculator.csproj -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
-#RUN dotnet publish ./calculator/Circuit.Calculator.csproj -c $BUILD_CONFIGURATION -o /equations --no-restore
+#RUN dotnet publish ./calculator/Circuit.Calculator.csproj -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./calculator/Circuit.Calculator.csproj" -c debug -o /app/publish --no-restore
 
-# This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
+# Final stage/image
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+ENV DOTNET_AttachStdout=1
+ENV DOTNET DOTNET_CLI_TELEMETRY_OPTOUT=1
 ENTRYPOINT ["dotnet", "Circuit.Calculator.dll"]
+CMD ["-u"]
