@@ -1,4 +1,4 @@
-﻿using Circuit.Equations;
+﻿using Equations.Numbers;
 
 namespace Circuit.Calculator
 {
