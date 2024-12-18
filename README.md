@@ -21,4 +21,8 @@ It is about 85% complete and needs love in a few places.
 ### Present workloads
 
 * A computational engine for [pettable](https://github.com/Cartheur-Research/animals-pettable)
-* Shelved.
+* Words.
+
+#### Errata
+
+* Branch _stale_ is the first-draft codebase.
