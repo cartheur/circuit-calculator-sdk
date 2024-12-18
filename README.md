@@ -21,4 +21,4 @@ It is about 85% complete and needs love in a few places.
 ### Present workloads
 
 * A computational engine for [pettable](https://github.com/Cartheur-Research/animals-pettable)
-* Others.
+* Shelved.
