@@ -1,43 +1,23 @@
-﻿using System;
-using System.Data;
-using System.Data.SQLite;
-using System.IO;
+﻿using System.Data.SQLite;
 
 namespace Circuit.Data
 {
     public class ExperimentalData
     {
-        private Form owner;
         private static bool instance = false;
+        private static string sessionID = (string)AppDomain.CurrentDomain.GetData("SessionID");
+        private static string frequencyUnit = "Hz";
 
         public ExperimentalData()
         {
-            InitializeComponent();
-
             instance = true;
-            sessionValue.Text = (string)AppDomain.CurrentDomain.GetData("SessionID");
-            ToolTip toolTip = new ToolTip();
-            toolTip.AutoPopDelay = 10000;
-            toolTip.InitialDelay = 400;
-            toolTip.ReshowDelay = 250;
-            toolTip.ShowAlways = true;
-            toolTip.SetToolTip(this.oscillatorPictureBox, "The Model 'G' Push-Pull Oscillator");
-            toolTip.SetToolTip(this.antennaPictureBox, "The Linz Antenna and the 'outer' - 'inner' zone winding experiments.");
-            frequencyUnit.Text = "Hz";
+            //sessionValue.Text = (string)AppDomain.CurrentDomain.GetData("SessionID");
 
         }
         /// <summary>
         /// Checks the instance of the form.
         /// </summary>
         public static bool Instance { get { return instance; } set { instance = value; } }
-        /// <summary>
-        /// Closes the instance of the form.
-        /// </summary>
-        private void closeButton_Click(object sender, EventArgs e)
-        {
-            instance = false;
-            Close();
-        }
         /// <summary>
         /// Stores the input experimental data.
         /// </summary>

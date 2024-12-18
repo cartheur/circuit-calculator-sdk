@@ -1,20 +1,14 @@
-using System;
 using System.Data;
 using System.Data.SQLite;
-using System.IO;
-using System.Windows.Forms;
 
 namespace Circuit.Data
 {
     public class MachineData
     {
-        private Form owner;
         private static bool instance = false;
 
         public MachineData()
         {
-            InitializeComponent();
-
             instance = true;
             sessionValue.Text = (string)AppDomain.CurrentDomain.GetData("SessionID");
             dimensionalUnitsSelection.SelectedItem = "mm";

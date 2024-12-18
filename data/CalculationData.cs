@@ -1,19 +1,14 @@
-using System;
 using System.Data;
 using System.Data.SQLite;
-using System.IO;
 
 namespace Circuit.Data
 {
     public partial class CalculationData
     {
-        private Form owner;
         private static bool instance = false;
 
         public CalculationData()
         {
-            InitializeComponent();
-
             instance = true;
             sessionValue.Text = (string)AppDomain.CurrentDomain.GetData("SessionID");
             calculationDataGridView_Load();
