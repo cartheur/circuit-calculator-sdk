@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Circuit.Calculator": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
