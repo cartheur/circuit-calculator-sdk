@@ -8,7 +8,7 @@ namespace Circuit.Calculator
         {
             Console.WriteLine("Hello, this is the Circuit Calculator!");
 
-            Console.WriteLine("An example of how to use the calculator to compute complex numbers");
+            Console.WriteLine("An example of how to use the calculator to compute complex numbers.");
             Complex c1 = new Complex( 3, 9 );
             Complex c2 = new Complex( 8, 3 );
             // sum
@@ -23,6 +23,10 @@ namespace Circuit.Calculator
             Console.WriteLine( "Difference: " + d2 );
             Complex d3 = c1 - 2;
             Console.WriteLine( "Difference: " + d3 );
+
+            Console.WriteLine("An example of how to use the calculator to compute the resonance frequency of a circuit.");
+            Console.WriteLine("The result is: " + Equations.Expressions.ResonanceCalculator.CalculateResonance( 100, 68 ));
+            
 
             //Console.WriteLine("Please enter the circuit you want to calculate:");
             //string circuit = Console.ReadLine();

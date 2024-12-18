@@ -14,6 +14,12 @@ namespace Equations.Expressions
         public static double ResonanceFrequency { get; set; }
         public static double Wavelength { get; set; }
         public static string WavelengthFactor { get; set; }
+        /// <summary>
+        /// Calculates the resonance frequency of a circuit.
+        /// </summary>
+        /// <param name="capacitance">The value in nF</param>
+        /// <param name="inductance">The value in uH</param>
+        /// <returns>The value plus computes the wavelength, filling this property.</returns>
         public static double CalculateResonance(double capacitance, double inductance)
         {
             CapacitanceValue = capacitance;
