@@ -25,7 +25,7 @@ It is about 85% complete and needs love in a few places.
 
 ### The containerized build
 
-`podman build --force-rm --tag calculon:20241218 /home/cartheur/ame/aiventure/aiventure-github/cartheur/circuit-calculator-sdk/Circuit.Calculator`
+`podman build --force-rm --tag calculon:20241218 /home/cartheur/ame/aiventure/aiventure-github/cartheur/circuit-calculator-sdk`
 
 #### Errata
 
