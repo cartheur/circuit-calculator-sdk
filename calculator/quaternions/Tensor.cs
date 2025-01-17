@@ -4,26 +4,30 @@ namespace QuaternionObjects
 {
     public struct Tensor
     {
-        public double X, Y, Z; // coordinate system follows right-hand rule
+        public double W, X, Y, Z; // coordinate system follows right-hand rule
 
-        public Tensor(double x, double y, double z)
+        public Tensor(double w,double x, double y, double z)
         {
-            X = x; Y = y; Z = z;
+            W = w; X = x; Y = y; Z = z;
         }
 
         public Tensor(Vector v)
         {
             X = v.X; Y = v.Y; Z = v.Z;
         }
+        public Tensor(Quaternion q)
+        {
+            W = q.W; X = q.X; Y = q.Y; Z = q.Z;
+        }
 
         public Tensor Copy()
         {
-            return new Tensor(this.X, this.Y, this.Z);
+            return new Tensor(this. W, this.X, this.Y, this.Z);
         }
 
         public Vector ToVector()
         {
-            return new Vector(X, Y, Z);
+            return new Vector(X, Y, Z);//  new Scalar(W);
         }
 
         public void Offset(double x, double y, double z)
