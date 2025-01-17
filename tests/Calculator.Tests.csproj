@@ -4,7 +4,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\equations\Circuit.Equations.csproj" />
+    <ProjectReference Include="..\equations\Circuit.Calculator.csproj" />
   </ItemGroup>
 
 </Project>

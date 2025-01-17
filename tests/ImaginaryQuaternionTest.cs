@@ -1,8 +1,45 @@
 using System.Numerics;
-using Equations.Expressions;
 
 namespace Calculator.Tests
 {
+    public class ImaginaryQuaternion
+    {
+        public Complex I { get; }
+        public Complex J { get; }
+        public Complex K { get; }
+
+        public ImaginaryQuaternion(Complex i, Complex j, Complex k)
+        {
+            I = i;
+            J = j;
+            K = k;
+        }
+
+        public static ImaginaryQuaternion operator +(ImaginaryQuaternion a, ImaginaryQuaternion b)
+        {
+            return new ImaginaryQuaternion(a.I + b.I, a.J + b.J, a.K + b.K);
+        }
+
+        public static ImaginaryQuaternion operator -(ImaginaryQuaternion a, ImaginaryQuaternion b)
+        {
+            return new ImaginaryQuaternion(a.I - b.I, a.J - b.J, a.K - b.K);
+        }
+
+        public static ImaginaryQuaternion operator *(ImaginaryQuaternion a, ImaginaryQuaternion b)
+        {
+            return new ImaginaryQuaternion(a.I * b.I, a.J * b.J, a.K * b.K);
+        }
+
+        public static ImaginaryQuaternion operator /(ImaginaryQuaternion a, ImaginaryQuaternion b)
+        {
+            return new ImaginaryQuaternion(a.I / b.I, a.J / b.J, a.K / b.K);
+        }
+
+        public override string ToString()
+        {
+            return $"({I}, {J}, {K})";
+        }
+    }
     [TestClass]
     public class ImaginaryQuaternionTest
     {

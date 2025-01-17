@@ -5,19 +5,14 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>.</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
   </ItemGroup>
 
-
   <ItemGroup>
-  <ProjectReference Include="..\data\Circuit.Data.csproj" />
-  <ProjectReference Include="..\equations\Circuit.Equations.csproj" />
-  <ProjectReference Include="..\tests\Calculator.Tests.csproj" />
+    <ProjectReference Include="..\tests\Calculator.Tests.csproj" />
   </ItemGroup>
 
 </Project>
