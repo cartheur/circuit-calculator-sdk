@@ -6,7 +6,11 @@ namespace Circuit.Calculator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, this is the Circuit Calculator!");
+            Console.WriteLine("Compute: Paper #1 equations...");
+            //Here.
+            
+
+
 
             Console.WriteLine("An example of how to use the calculator to compute complex numbers.");
             Complex c1 = new Complex( 3, 9 );
