@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace QuaternionObjects
+﻿namespace QuaternionObjects
 {
     public struct UnitVector
     {
