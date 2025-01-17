@@ -7,7 +7,7 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 COPY ./calculator .
-COPY ./equations .
+COPY ./tests .
 COPY . .
 
 # MsBuild stage

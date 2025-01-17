@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\equations\Circuit.Calculator.csproj" />
+    <ProjectReference Include="..\calculator\Circuit.Calculator.csproj" />
   </ItemGroup>
 
 </Project>
