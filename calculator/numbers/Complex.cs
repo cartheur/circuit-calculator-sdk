@@ -1,4 +1,3 @@
-using System;
 using System.Text.RegularExpressions;
 using System.Runtime.Serialization;
 
@@ -8,9 +7,7 @@ namespace Equations.Numbers
     /// Complex number wrapper class.
     /// </summary>
     /// 
-    /// <remarks><para>The class encapsulates complex number and provides
-    /// set of different operators to manipulate it, lake adding, subtractio,
-    /// multiplication, etc.</para>
+    /// <remarks><para>The class encapsulates complex number and provides a set of different operators to manipulate it: Addtion, subtraction, multiplication, and division.</para>
     /// 
     /// <para>Sample usage:</para>
     /// <code>

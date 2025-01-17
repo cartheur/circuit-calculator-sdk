@@ -1,4 +1,3 @@
-using System;
 using QuaternionObjects.Serialization;
 
 namespace QuaternionObjects
@@ -6,31 +5,31 @@ namespace QuaternionObjects
     /// <summary>
     /// Summary description for Quaternion.
     /// </summary>
-    public struct Quaternion_big : IParsable
+    public struct QuaternionBig : IParsable
     {
         const double Epsilon = 1e-03f;
 
         public double W, X, Y, Z;
 
-        private static readonly Quaternion_big IdentityQuaternion = new Quaternion_big(1.0f, 0.0f, 0.0f, 0.0f);
-        private static readonly Quaternion_big ZeroQuaternion = new Quaternion_big(0.0f, 0.0f, 0.0f, 0.0f);
+        private static readonly QuaternionBig IdentityQuaternion = new QuaternionBig(1.0f, 0.0f, 0.0f, 0.0f);
+        private static readonly QuaternionBig ZeroQuaternion = new QuaternionBig(0.0f, 0.0f, 0.0f, 0.0f);
         private static readonly int[] Next = new int[] { 1, 2, 0 };
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Quaternion_big"/> struct.
+        /// Initializes a new instance of the <see cref="QuaternionBig"/> struct.
         /// </summary>
         /// <param name="w">The w.</param>
         /// <param name="x">The x.</param>
         /// <param name="y">The y.</param>
         /// <param name="z">The z.</param>
-        public Quaternion_big(double w, double x, double y, double z)
+        public QuaternionBig(double w, double x, double y, double z)
         {
             W = w;
             X = x;
             Y = y;
             Z = z;
         }
-        private Quaternion_big(string parsableText)
+        private QuaternionBig(string parsableText)
         {
             if (parsableText == null)
                 throw new ArgumentException("Text cannot be null.");
@@ -39,7 +38,7 @@ namespace QuaternionObjects
                 if (parsableText[0] == '[') //[pitch,yaw,roll], Rotation in euler angles in degrees
                 {
                     string[] vals = parsableText.TrimStart('[').TrimEnd(']').Split(',');
-                    Quaternion_big q = FromEulerAnglesInDegrees(double.Parse(vals[0]), double.Parse(vals[1]), double.Parse(vals[2]));
+                    QuaternionBig q = FromEulerAnglesInDegrees(double.Parse(vals[0]), double.Parse(vals[1]), double.Parse(vals[2]));
                     W = q.W;
                     X = q.X;
                     Y = q.Y;
@@ -64,7 +63,7 @@ namespace QuaternionObjects
         /// </summary>
         /// <remarks>The struct is used to prevent confusion with another overload of a class's constructor that may accept a string</remarks>
         /// <param name="data"></param>
-        public Quaternion_big(ParsedData data)
+        public QuaternionBig(ParsedData data)
             : this(data.Text)
         {
         }
@@ -82,7 +81,7 @@ namespace QuaternionObjects
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static Quaternion_big Multiply(Quaternion_big left, Quaternion_big right)
+        public static QuaternionBig Multiply(QuaternionBig left, QuaternionBig right)
         {
             return left * right;
         }
@@ -97,9 +96,9 @@ namespace QuaternionObjects
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static Quaternion_big operator *(Quaternion_big left, Quaternion_big right)
+        public static QuaternionBig operator *(QuaternionBig left, QuaternionBig right)
         {
-            Quaternion_big q = new Quaternion_big();
+            QuaternionBig q = new QuaternionBig();
 
             q.W = left.W * right.W - left.X * right.X - left.Y * right.Y - left.Z * right.Z;
             q.X = left.W * right.X + left.X * right.W + left.Y * right.Z - left.Z * right.Y;
@@ -125,7 +124,7 @@ namespace QuaternionObjects
         /// <param name="quat"></param>
         /// <param name="vector"></param>
         /// <returns></returns>
-        public static Vector3 Multiply(Quaternion_big quat, Vector3 vector)
+        public static Vector3 Multiply(QuaternionBig quat, Vector3 vector)
         {
             return quat * vector;
         }
@@ -136,7 +135,7 @@ namespace QuaternionObjects
         /// <param name="quat"></param>
         /// <param name="vector"></param>
         /// <returns></returns>
-        public static Vector3 operator *(Quaternion_big quat, Vector3 vector)
+        public static Vector3 operator *(QuaternionBig quat, Vector3 vector)
         {
             // nVidia SDK implementation
             Vector3 uv, uuv;
@@ -159,7 +158,7 @@ namespace QuaternionObjects
         /// <param name="scalar"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static Quaternion_big Multiply(double scalar, Quaternion_big right)
+        public static QuaternionBig Multiply(double scalar, QuaternionBig right)
         {
             return scalar * right;
         }
@@ -170,9 +169,9 @@ namespace QuaternionObjects
         /// <param name="scalar"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static Quaternion_big operator *(double scalar, Quaternion_big right)
+        public static QuaternionBig operator *(double scalar, QuaternionBig right)
         {
-            return new Quaternion_big(scalar * right.W, scalar * right.X, scalar * right.Y, scalar * right.Z);
+            return new QuaternionBig(scalar * right.W, scalar * right.X, scalar * right.Y, scalar * right.Z);
         }
 
         /// <summary>
@@ -181,7 +180,7 @@ namespace QuaternionObjects
         /// <param name="left"></param>
         /// <param name="scalar"></param>
         /// <returns></returns>
-        public static Quaternion_big Multiply(Quaternion_big left, double scalar)
+        public static QuaternionBig Multiply(QuaternionBig left, double scalar)
         {
             return left * scalar;
         }
@@ -192,9 +191,9 @@ namespace QuaternionObjects
         /// <param name="left"></param>
         /// <param name="scalar"></param>
         /// <returns></returns>
-        public static Quaternion_big operator *(Quaternion_big left, double scalar)
+        public static QuaternionBig operator *(QuaternionBig left, double scalar)
         {
-            return new Quaternion_big(scalar * left.W, scalar * left.X, scalar * left.Y, scalar * left.Z);
+            return new QuaternionBig(scalar * left.W, scalar * left.X, scalar * left.Y, scalar * left.Z);
         }
 
         /// <summary>
@@ -203,7 +202,7 @@ namespace QuaternionObjects
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static Quaternion_big Add(Quaternion_big left, Quaternion_big right)
+        public static QuaternionBig Add(QuaternionBig left, QuaternionBig right)
         {
             return left + right;
         }
@@ -214,9 +213,9 @@ namespace QuaternionObjects
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static Quaternion_big operator +(Quaternion_big left, Quaternion_big right)
+        public static QuaternionBig operator +(QuaternionBig left, QuaternionBig right)
         {
-            return new Quaternion_big(left.W + right.W, left.X + right.X, left.Y + right.Y, left.Z + right.Z);
+            return new QuaternionBig(left.W + right.W, left.X + right.X, left.Y + right.Y, left.Z + right.Z);
         }
 
         /// <summary>
@@ -225,17 +224,17 @@ namespace QuaternionObjects
         /// </summary>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static Quaternion_big operator -(Quaternion_big right)
+        public static QuaternionBig operator -(QuaternionBig right)
         {
-            return new Quaternion_big(-right.W, -right.X, -right.Y, -right.Z);
+            return new QuaternionBig(-right.W, -right.X, -right.Y, -right.Z);
         }
 
-        public static bool operator ==(Quaternion_big left, Quaternion_big right)
+        public static bool operator ==(QuaternionBig left, QuaternionBig right)
         {
             return (left.W == right.W && left.X == right.X && left.Y == right.Y && left.Z == right.Z);
         }
 
-        public static bool operator !=(Quaternion_big left, Quaternion_big right)
+        public static bool operator !=(QuaternionBig left, QuaternionBig right)
         {
             return (left.W != right.W || left.X != right.X || left.Y != right.Y || left.Z != right.Z);
         }
@@ -247,7 +246,7 @@ namespace QuaternionObjects
         /// <summary>
         ///    An Identity Quaternion.
         /// </summary>
-        public static Quaternion_big Identity
+        public static QuaternionBig Identity
         {
             get
             {
@@ -258,7 +257,7 @@ namespace QuaternionObjects
         /// <summary>
         ///    A Quaternion with all elements set to 0.0f;
         /// </summary>
-        public static Quaternion_big Zero
+        public static QuaternionBig Zero
         {
             get
             {
@@ -401,12 +400,12 @@ namespace QuaternionObjects
 
         #region Static methods
 
-        public static Quaternion_big Parse(string text)
+        public static QuaternionBig Parse(string text)
         {
-            return new Quaternion_big(text);
+            return new QuaternionBig(text);
         }
 
-        public static Quaternion_big Slerp(double time, Quaternion_big quatA, Quaternion_big quatB)
+        public static QuaternionBig Slerp(double time, QuaternionBig quatA, QuaternionBig quatB)
         {
             return Slerp(time, quatA, quatB, false);
         }
@@ -419,7 +418,7 @@ namespace QuaternionObjects
         /// <param name="quatB"></param>
         /// <param name="useShortestPath"></param>
         /// <returns></returns>
-        public static Quaternion_big Slerp(double time, Quaternion_big quatA, Quaternion_big quatB, bool useShortestPath)
+        public static QuaternionBig Slerp(double time, QuaternionBig quatA, QuaternionBig quatB, bool useShortestPath)
         {
             double cos = quatA.Dot(quatB);
 
@@ -435,13 +434,13 @@ namespace QuaternionObjects
             double coeff0 = Functions.Sin((1.0f - time) * angle) * inverseSin;
             double coeff1 = Functions.Sin(time * angle) * inverseSin;
 
-            Quaternion_big result;
+            QuaternionBig result;
 
             if (cos < 0.0f && useShortestPath)
             {
                 coeff0 = -coeff0;
                 // taking the complement requires renormalisation
-                Quaternion_big t = coeff0 * quatA + coeff1 * quatB;
+                QuaternionBig t = coeff0 * quatA + coeff1 * quatB;
                 t.Normalize();
                 result = t;
             }
@@ -459,9 +458,9 @@ namespace QuaternionObjects
         /// <param name="angle">Value of an angle in radians.</param>
         /// <param name="axis">Arbitrary axis vector.</param>
         /// <returns></returns>
-        public static Quaternion_big FromAngleAxis(double angle, Vector3 axis)
+        public static QuaternionBig FromAngleAxis(double angle, Vector3 axis)
         {
-            Quaternion_big quat = new Quaternion_big();
+            QuaternionBig quat = new QuaternionBig();
 
             double halfAngle = 0.5f * angle;
             double sin = Functions.Sin(halfAngle);
@@ -474,7 +473,7 @@ namespace QuaternionObjects
             return quat;
         }
 
-        public static Quaternion_big Squad(double t, Quaternion_big p, Quaternion_big a, Quaternion_big b, Quaternion_big q)
+        public static QuaternionBig Squad(double t, QuaternionBig p, QuaternionBig a, QuaternionBig b, QuaternionBig q)
         {
             return Squad(t, p, a, b, q, false);
         }
@@ -488,13 +487,13 @@ namespace QuaternionObjects
         /// <param name="b"></param>
         /// <param name="q"></param>
         /// <returns></returns>
-        public static Quaternion_big Squad(double t, Quaternion_big p, Quaternion_big a, Quaternion_big b, Quaternion_big q, bool useShortestPath)
+        public static QuaternionBig Squad(double t, QuaternionBig p, QuaternionBig a, QuaternionBig b, QuaternionBig q, bool useShortestPath)
         {
             double slerpT = 2.0f * t * (1.0f - t);
 
             // use spherical linear interpolation
-            Quaternion_big slerpP = Slerp(t, p, q, useShortestPath);
-            Quaternion_big slerpQ = Slerp(t, a, b);
+            QuaternionBig slerpP = Slerp(t, p, q, useShortestPath);
+            QuaternionBig slerpQ = Slerp(t, a, b);
 
             // run another Slerp on the results of the first 2, and return the results
             return Slerp(slerpT, slerpP, slerpQ);
@@ -558,7 +557,7 @@ namespace QuaternionObjects
             if (roll <= double.Epsilon)
                 roll = 0f;
         }
-        public static Quaternion_big FromEulerAnglesInDegrees(double pitch, double yaw, double roll)
+        public static QuaternionBig FromEulerAnglesInDegrees(double pitch, double yaw, double roll)
         {
             return FromEulerAngles(Functions.DegreesToRadians(pitch), Functions.DegreesToRadians(yaw), Functions.DegreesToRadians(roll));
         }
@@ -570,7 +569,7 @@ namespace QuaternionObjects
         /// <param name="yaw"></param>
         /// <param name="roll"></param>
         /// <returns></returns>
-        public static Quaternion_big FromEulerAngles(double pitch, double yaw, double roll)
+        public static QuaternionBig FromEulerAngles(double pitch, double yaw, double roll)
         {
             return FromAngleAxis(yaw, Vector3.UnitY)
                 * FromAngleAxis(pitch, Vector3.UnitX)
@@ -605,7 +604,7 @@ namespace QuaternionObjects
         /// </summary>
         /// <param name="quat"></param>
         /// <returns></returns>
-        public double Dot(Quaternion_big quat)
+        public double Dot(QuaternionBig quat)
         {
             return W * quat.W + X * quat.X + Y * quat.Y + Z * quat.Z;
         }
@@ -691,13 +690,13 @@ namespace QuaternionObjects
         /// Computes the inverse of a Quaternion.
         /// </summary>
         /// <returns></returns>
-        public Quaternion_big Inverse()
+        public QuaternionBig Inverse()
         {
             double norm = W * W + X * X + Y * Y + Z * Z;
             if (norm > 0.0f)
             {
                 double inverseNorm = 1.0f / norm;
-                return new Quaternion_big(W * inverseNorm, -X * inverseNorm, -Y * inverseNorm, -Z * inverseNorm);
+                return new QuaternionBig(W * inverseNorm, -X * inverseNorm, -Y * inverseNorm, -Z * inverseNorm);
             }
             else
             {
@@ -819,7 +818,7 @@ namespace QuaternionObjects
         ///		Calculates the logarithm of a Quaternion.
         /// </summary>
         /// <returns></returns>
-        public Quaternion_big Log()
+        public QuaternionBig Log()
         {
             // BLACKBOX: Learn this
             // If q = cos(A)+sin(A)*(x*i+y*j+z*k) where (x,y,z) is unit length, then
@@ -827,7 +826,7 @@ namespace QuaternionObjects
             // sin(A)*(x*i+y*j+z*k) since sin(A)/A has limit 1.
 
             // start off with a zero quat
-            Quaternion_big result = Zero;
+            QuaternionBig result = Zero;
 
             if (Functions.Abs(W) < 1.0f)
             {
@@ -856,7 +855,7 @@ namespace QuaternionObjects
         ///		Calculates the Exponent of a Quaternion.
         /// </summary>
         /// <returns></returns>
-        public Quaternion_big Exp()
+        public QuaternionBig Exp()
         {
             // If q = A*(x*i+y*j+z*k) where (x,y,z) is unit length, then
             // exp(q) = cos(A)+sin(A)*(x*i+y*j+z*k).  If sin(A) is near zero,
@@ -866,7 +865,7 @@ namespace QuaternionObjects
             double sin = Functions.Sin(angle);
 
             // start off with a zero quat
-            Quaternion_big result = Zero;
+            QuaternionBig result = Zero;
 
             result.W = Functions.Cos(angle);
 
@@ -935,7 +934,7 @@ namespace QuaternionObjects
         }
         public override bool Equals(object obj)
         {
-            return obj is Quaternion_big && this == (Quaternion_big)obj;
+            return obj is QuaternionBig && this == (QuaternionBig)obj;
         }
 
 
