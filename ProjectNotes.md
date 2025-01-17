@@ -9,3 +9,5 @@
     1313: It got me classes but no plot and I had to wire the tests myself. Mixed mode for sure.
 17.01.2025
     1412: The focal-point for the annus mirabilis (Project 2025) series.
+    1709: Staring by computing the first series of equations for the tripo papers.
+    
