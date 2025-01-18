@@ -2,57 +2,52 @@ using System.Drawing;
 
 namespace QuaternionObjects
 {
-    /// <summary>
-    ///  A versor is a quaternion of norm one (a unit quaternion).
-    ///  <remarks>https://en.wikipedia.org/wiki/Versor</remarks>
-    /// </summary>
-    public struct Versor
+    public class Versor
     {
-        public double X, Y, Z; // coordinate system follows right-hand rule
-        /// <summary>
-        /// True if the verser is right-handed, left otherwise.
-        /// </summary>
-        public bool Right;
+        public double X { get; private set; }
+        public double Y { get; private set; }
+        public double Z { get; private set; }
+        public bool Right { get; private set; } // True if the versor is right-handed, false otherwise
 
-        public Versor(bool right,double x, double y, double z)
+        public Versor(bool right, double x, double y, double z)
         {
-            Right = right; X = x; Y = y; Z = z;
+            Right = right;
+            X = x;
+            Y = y;
+            Z = z;
         }
 
-        public Versor(Vector v)
+        public Versor(Vector v, bool right = true)
         {
-            X = v.X; Y = v.Y; Z = v.Z;
+            X = v.X;
+            Y = v.Y;
+            Z = v.Z;
+            Right = right;
         }
-        public Versor(Quaternion q)
+
+        public Versor(Quaternion q, bool right = true)
         {
-            X = q.X; Y = q.Y; Z = q.Z;
+            X = q.X;
+            Y = q.Y;
+            Z = q.Z;
+            Right = right;
         }
 
         public Versor Copy()
         {
-            return new Versor(Right, this.X, this.Y, this.Z);
+            return new Versor(Right, X, Y, Z);
         }
 
-        public Versor ToVector()
+        public Vector ToVector()
         {
-            return new Versor(false, X, Y, Z);//  new Scalar(W);
+            return new Vector(X, Y, Z);
         }
 
-        public void Offset(double x, double y, double z)
+        public void Offset(double offsetX, double offsetY, double offsetZ)
         {
-            this.X += x;
-            this.Y += y;
-            this.Z += z;
-        }
-
-        public static Versor[] Copy(Versor[] pts)
-        {
-            Versor[] copy = new Versor[pts.Length];
-            for (int i = 0; i < pts.Length; i++)
-            {
-                copy[i] = pts[i].Copy();
-            }
-            return copy;
+            X += offsetX;
+            Y += offsetY;
+            Z += offsetZ;
         }
 
         public static void Offset(Versor[] pts, double offsetX, double offsetY, double offsetZ)
@@ -65,10 +60,10 @@ namespace QuaternionObjects
 
         public PointF GetProjectedPoint(double d /* project distance: from eye to screen*/)
         {
-            return new PointF((float)(this.X * d / (d + this.Z)), (float)(this.Y * d / (d + this.Z)));
+            return new PointF((float)(X * d / (d + Z)), (float)(Y * d / (d + Z)));
         }
 
-        public static PointF[] Project(Tensor[] pts, double d /* project distance: from eye to screen*/)
+        public static PointF[] Project(Versor[] pts, double d /* project distance: from eye to screen*/)
         {
             PointF[] pt2ds = new PointF[pts.Length];
             for (int i = 0; i < pts.Length; i++)
