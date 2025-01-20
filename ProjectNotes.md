@@ -10,4 +10,5 @@
 17.01.2025
     1412: The focal-point for the annus mirabilis (Project 2025) series.
     1709: Staring by computing the first series of equations for the tripo papers.
-    
+20.01.2025
+    1304: In celebration of the times, doing the animals' dance.
